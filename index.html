@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Exercise Alarm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Normal clock screen -->
+    <div id="clockScreen" class="screen">
+      <div class="card">
+        <h1 id="clock">00:00:00</h1>
+        <p id="dateLine" class="subtext">Loading date...</p>
+        <div id="secondsBarContainer"><div id="secondsBar"></div></div>
+
+        <div class="divider"></div>
+
+        <div class="field-group">
+          <label for="alarmTime">Alarm Time</label>
+          <input type="time" id="alarmTime">
+        </div>
+
+        <div class="field-group">
+          <label for="pushupsRequired">Pushups Required</label>
+          <input type="number" id="pushupsRequired" min="1" max="100" value="10">
+        </div>
+
+        <div class="field-group">
+          <label for="customSound">Alarm Sound (optional)</label>
+          <input type="file" id="customSound" accept="audio/*">
+        </div>
+
+        <div class="button-row">
+          <button id="setAlarmBtn" class="btn primary">Set Alarm</button>
+          <button id="cancelAlarmBtn" class="btn secondary">Cancel</button>
+        </div>
+
+        <p id="alarmStatus" class="status">No alarm set</p>
+      </div>
+    </div>
+
+    <!-- Gate 1: Math problem -->
+    <div id="mathScreen" class="screen hidden">
+      <div class="card">
+        <span class="badge">Wake Up</span>
+        <p id="mathQuestion" class="question">2 + 2 = ?</p>
+        <input type="number" id="mathAnswer" placeholder="Your answer">
+        <button id="submitMathBtn" class="btn primary full">Submit</button>
+        <p id="mathFeedback" class="status error"></p>
+      </div>
+    </div>
+
+    <!-- Gate 2: Pushups via webcam -->
+    <div id="exerciseScreen" class="screen hidden">
+      <div class="card">
+        <span class="badge">Keep Moving</span>
+        <p id="exerciseStatus" class="subtext">Get moving to stop the alarm</p>
+        <video id="webcam" autoplay muted playsinline></video>
+        <canvas id="motionCanvas" class="hidden"></canvas>
+        <div id="progressBarContainer"><div id="progressBar"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- User-selected alarm sound (empty until they pick a file) -->
+  <audio id="userAlarmAudio" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
