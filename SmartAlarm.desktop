@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Smart Exercise Alarm
+Comment=My pushup + math alarm clock app
+Exec=firefox /home/ayush/smart-exercise-alarm/index.html
+Icon=firefox
+Terminal=false
+Categories=Utility;
